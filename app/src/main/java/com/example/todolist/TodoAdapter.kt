@@ -1,18 +1,20 @@
 package com.example.todolist
 
+import android.annotation.SuppressLint
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todolist.databinding.ItemTodoBinding
+
 class TodoAdapter(
     private  var todos: MutableList<Todo>): RecyclerView.Adapter<TodoAdapter.TodoViewHolder>(){
-    inner class TodoViewHolder(itemView:View) :RecyclerView.ViewHolder(itemView)
+    inner class TodoViewHolder(val binding: ItemTodoBinding) :RecyclerView.ViewHolder(binding.root)
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
-          var view = LayoutInflater.from(parent.context).inflate(R.layout.item_todo,parent,false)
+          val view = ItemTodoBinding.inflate(LayoutInflater.from(parent.context),parent,false)
                  return TodoViewHolder(view)
     }
     fun addtodo(todo:Todo)
@@ -42,12 +44,12 @@ class TodoAdapter(
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         val curTodo = todos[position]
-        holder.itemView.apply {
-            findViewById<TextView>(R.id.tvTodoitem).text=curTodo.title
-            findViewById<CheckBox>(R.id.cbDone).isChecked=curTodo.isCheck
-            toggleStrinkeThrough(findViewById(R.id.tvTodoitem),curTodo.isCheck)
-            findViewById<CheckBox>(R.id.cbDone).setOnCheckedChangeListener { _, b ->
-                toggleStrinkeThrough(findViewById(R.id.tvTodoitem),!curTodo.isCheck)
+        holder.binding.apply {
+            tvTodoitem.text=curTodo.title
+            cbDone.isChecked=curTodo.isCheck
+            toggleStrinkeThrough(tvTodoitem,curTodo.isCheck)
+            cbDone.setOnCheckedChangeListener { _, b ->
+                toggleStrinkeThrough(tvTodoitem,!curTodo.isCheck)
                 curTodo.isCheck = !curTodo.isCheck
             }
         }
