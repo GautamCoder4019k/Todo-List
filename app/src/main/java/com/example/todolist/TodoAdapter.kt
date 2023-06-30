@@ -23,12 +23,13 @@ class TodoAdapter(
         notifyItemInserted(todos.size-1)
     }
 
-    fun deleteDoneTodos()
-    {
-        todos.removeAll{ todo ->
-            todo.isCheck
-        }
+    fun updateTodos(todoList: List<Todo>) {
+        todos = todoList as MutableList<Todo>
         notifyDataSetChanged()
+    }
+
+    fun getTodos(): MutableList<Todo> {
+        return(todos)
     }
 
     private fun toggleStrinkeThrough(tvTodoTiltle : TextView, ischecked : Boolean)
