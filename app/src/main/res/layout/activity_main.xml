@@ -20,33 +20,28 @@
         android:id="@+id/etTodoItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:hint="Enter Todo items "
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnAddTodo"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <Button
         android:id="@+id/btnAddTodo"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
-        android:text="Add To do"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/ic_tick"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnDeleteTodo" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
-
-    <Button
-        android:id="@+id/btnDeleteTodo"
-        android:layout_width="100dp"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
-        android:text="Delete To do"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="50dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
